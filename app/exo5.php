@@ -49,7 +49,16 @@ try {
             <h2 class="exercice-ttl">Question 1</h2>
             <p class="exercice-txt">Récupérer dans un tableau puis afficher l'ensemble des plateformes de diffusion des séries. Afficher les par ordre alphabétique.</p>
             <div class="exercice-sandbox">
-                
+                <?php
+                    var_dump($series);
+                    $seriesDiff = [];
+                    foreach($series as $serie){
+                        $seriesDiff[] = $serie['availableOn'];
+                    }
+                    $seriesDiff = array_unique($seriesDiff);
+                    sort($seriesDiff);
+                    var_dump($seriesDiff);
+                ?>
             </div>
         </section>
 
@@ -59,7 +68,16 @@ try {
             <p class="exercice-txt">Afficher la liste de toutes les séries avec l'image principale et son titre</p>
             <p class="exercice-txt">Afficher une seule série par ligne sur les plus petits écrans, 2 séries par ligne sur les écrans intermédiaires et 4 séries par ligne sur un écran d'ordinateur.</p>
             <div class="exercice-sandbox">
-
+                <ul>
+                    <?php
+                    foreach($series as $serie){
+                        echo "<li class=\"contains\">
+                        <img src=\"{$serie['image']}\" alt=\"image promotionnel de{$serie['name']}\">
+                        <h2>{$serie['name']}</h2>
+                        </li>";
+                    }
+                    ?>
+                    </ul>
             </div>
         </section>
 
